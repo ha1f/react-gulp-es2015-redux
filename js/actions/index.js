@@ -9,7 +9,7 @@ export function increment() {
 
 export function decrement() {
     return {
-        type: 'PLUS',
-        num: -1
+        type: 'MINUS',
+        num: 1
     };
 }

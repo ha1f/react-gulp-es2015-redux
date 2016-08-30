@@ -19,7 +19,7 @@ const store = createStore((state = INITIAL_STATE, action) => {
             });
         case 'MINUS':
             return Object.assign({}, state, {
-                number: state.number + action.num
+                number: state.number - action.num
             });
         default:
             return state
