@@ -1,23 +1,23 @@
-var gulp = require('gulp');
-var browserify = require('browserify');
-var babelify = require('babelify');
-var source = require('vinyl-source-stream');
-var webserver = require('gulp-webserver');
+const gulp = require('gulp');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const webserver = require('gulp-webserver');
 
-gulp.task('browserify', function() {
+gulp.task('browserify', () => {
     browserify('./js/index.jsx', { debug: true })
         .transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
-        .on("error", function (err) { console.log("Error : " + err.message); })
+        .on("error", (err) => { console.log("Error : " + err.message); })
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./js/'))
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     gulp.watch(['./js/components/*.jsx', './js/actions/*.js', './js/*.jsx'], ['browserify'])
 });
 
-gulp.task('webserver', function() {
+gulp.task('webserver', () => {
     gulp.src('./')
         .pipe(webserver({
             host: '127.0.0.1',
